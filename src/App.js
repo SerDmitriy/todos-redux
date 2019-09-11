@@ -1,7 +1,8 @@
 import React from 'react';
-// import logo from './logo.svg';
 import { connect } from 'react-redux';
 import './App.css';
+import TodosContainer from './components/TodosContainer/TodosContainer';
+import { actions } from './actions/rootActions'
 
 class App extends React.Component {
   constructor(props) {
@@ -10,10 +11,11 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('console text');
     return (
       <React.Fragment>
-        <span>text main</span>
+        <div>todos</div>
+        <TodosContainer />
+        <div>footer info </div>
       </React.Fragment>
     );
   }
@@ -26,7 +28,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return { testfunc: () => {console.log('test function works')} }
+  return { 
+    addTodo: payload => dispatch(actions.A_AddTodoSuccess(payload)),
+    removeTodo: payload => dispatch(actions.A_RemoveTodoSuccess(payload))
+  }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(App);

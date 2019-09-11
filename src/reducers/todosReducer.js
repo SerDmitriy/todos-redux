@@ -1,14 +1,8 @@
 const initialState = {
-  todos: [
-    { id: 123, value: 'some text' }
-  ],
+  todos: [],
   errors: null,
   loading: false,
   success: false,
-  isAuthenticated: false,
-  currentUser: {},
-  activeUser: {},
-  users: [{}]
 }
 
 export default (state = initialState, action) => {
@@ -35,11 +29,7 @@ export default (state = initialState, action) => {
       }
     case 'ADD_TODO_CLEAR':
       return {
-        ...state,
-        todos: [],
-        loading: false,
-        success: false,
-        errors: null
+        ...state
       }
     case 'EDIT_TODO_REQUEST':
       return {
@@ -63,18 +53,14 @@ export default (state = initialState, action) => {
       }
     case 'EDIT_TODO_CLEAR':
       return {
-        ...state,
-        todos: [],
-        loading: false,
-        success: false,
-        errors: null
+        ...state
       }
-    case 'DEL_TODO_REQUEST':
+    case 'REMOVE_TODO_REQUEST':
       return {
         ...state,
         loading: true
       }
-    case 'DEL_TODO_SUCCESS':
+    case 'REMOVE_TODO_SUCCESS':
       return {
         ...state,
         todos: [...state.todos].filter(item => item.id !== action.payload.id),
@@ -82,49 +68,16 @@ export default (state = initialState, action) => {
         success: true,
         errors: null
       }
-    case 'DEL_TODO_FAILED':
+    case 'REMOVE_TODO_FAILED':
       return {
         ...state,
         loading: false,
         success: false,
         errors: action.payload
       }
-    case 'DEL_TODO_CLEAR':
+    case 'REMOVE_TODO_CLEAR':
       return {
-        ...state,
-        todos: [],
-        loading: false,
-        success: false,
-        errors: null
-      }
-    case 'AUTH_TODO_REQUEST':
-      return {
-        ...state,
-        loading: true
-      }
-    case 'AUTH_TODO_SUCCESS':
-      return {
-        ...state,
-        isAuthenticated: true,
-        currentUser: action.payload,
-        loading: false,
-        success: true,
-        errors: null
-      }
-    case 'AUTH_TODO_FAILED':
-      return {
-        ...state,
-        loading: false,
-        success: false,
-        errors: action.payload
-      }
-    case 'AUTH_TODO_CLEAR':
-      return {
-        ...state,
-        currentUser: {},
-        loading: false,
-        success: false,
-        errors: null
+        ...state
       }
     case 'FETCH_TODO_REQUEST':
       return {
@@ -149,39 +102,31 @@ export default (state = initialState, action) => {
       }
     case 'FETCH_TODO_CLEAR':
       return {
-        ...state,
-        todos: [],
-        loading: false,
-        success: false,
-        errors: null
+        ...state
       }
-    case 'FETCHALL_TODO_REQUEST':
+    case 'FETCH_TODOS_REQUEST':
       return {
         ...state,
         loading: true
       }
-    case 'FETCHALL_TODO_SUCCESS':
+    case 'FETCH_TODOS_SUCCESS':
       return {
         ...state,
-        todos: [...state.todos],
+        todos: action.payload,
         loading: false,
         success: true,
         errors: null
       }
-    case 'FETCHALL_TODO_FAILED':
+    case 'FETCH_TODOS_FAILED':
       return {
         ...state,
         loading: false,
         success: false,
         errors: action.payload
       }
-    case 'FETCHALL_TODO_CLEAR':
+    case 'FETCH_TODOS_CLEAR':
       return {
-        ...state,
-        todos: [],
-        loading: false,
-        success: false,
-        errors: null
+        ...state
       }
 
     default:
