@@ -1,5 +1,24 @@
 .App {
+  margin: 0 auto;
+  padding: 20px;
+  width: 50%;
+  min-width: 400px;
+  background-color: rgb(250, 250, 250);
+}
+
+.todos {
+  height: 150px;
+  font-size: 100px;
+  font-weight: 100;
+  line-height: 140px;
   text-align: center;
+  color: rgba(175, 47, 47, 0.15);
+}
+
+.footer {
+  text-align: center;
+  font-size: 10px;
+  color: silver;
 }
 
 .App-logo {

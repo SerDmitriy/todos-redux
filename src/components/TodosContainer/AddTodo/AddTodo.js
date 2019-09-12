@@ -43,12 +43,13 @@ class AddTodo extends React.Component {
       <React.Fragment>
         <input
           value={todoValue}
+          className='addTodo'
           name='todoValue'
           key='inputKey'
           onChange={this.handleChangeField}
           onKeyUp={this.handleChangeField}
-          placeholder='default text' />
-        {errorMsg ? <div>{errorMsg}</div> : null  }
+          placeholder='What needs to be done?' />
+        {errorMsg ? <div className='errorMsg'>* {errorMsg}</div> : null  }
       </React.Fragment>
     );
   }

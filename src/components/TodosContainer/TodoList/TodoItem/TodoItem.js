@@ -13,22 +13,23 @@ class TodoItem extends React.Component {
     const { item, showTodos, removeTodo, checkedTodo } = this.props;
     let classNameSpan = '';
     // if (showTodos === 'checked' && !item.checked) { return null }
-    // if (showTodos === 'unChecked' && !item.checked) { return null }
-    if (showTodos === 'all' && item.checked) {classNameSpan = ' red'} else { classNameSpan = ' lime'}
+    // if (showTodos === 'unChecked' && !item.checked) { return null } /// add but no replace className
+    if (showTodos === 'all' && item.checked) {classNameSpan = ' darkgray'} else { classNameSpan = ' silver'}
     return (
       <React.Fragment>
-        <div>
+        <div className='todoItem'>
           <input
             type='radio'
             name={item.value}
+            className='inputChecked'
             defaultChecked={item.checked}
             onClick={() => checkedTodo(item)}/>
           <span className={classNameSpan}>{item.value}</span> 
           <button
             type='button'
+            className='delBtn'
             onClick={() => removeTodo(item)}
           > X </button>
-
         </div>
       </React.Fragment>
     );

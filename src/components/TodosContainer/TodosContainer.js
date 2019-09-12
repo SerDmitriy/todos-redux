@@ -6,9 +6,9 @@ import TodoList from './TodoList/TodoList';
 import TodoStatistic from './TodoStatistic/TodoStatistic';
 
 export default (() =>
-  <React.Fragment>
+  <div className='container'>
     <AddTodo />
     <TodoList />
     <TodoStatistic />
-  </React.Fragment>
+  </div>
 );

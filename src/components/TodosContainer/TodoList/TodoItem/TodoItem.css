@@ -1,10 +1,31 @@
-.red {
-  color: red;
-}
-#red {
-  color: red;
+.darkgray {
+  color: darkgray;
 }
 
-.lime {
-  color: lime;
+.silver {
+  color: silver;
+}
+
+.todoItem {
+  width: 100%;
+  font-size: 25px;
+  line-height: 30px;
+  border: 1px solid rgba(206, 205, 205, 0.349);
+}
+
+.delBtn {
+  float: right;
+  margin: 5px;
+  margin-left: 15px;
+  width: 30px;
+  height: 30px;
+  font-size: 22px;
+  line-height: 28px;
+
+}
+
+.inputChecked {
+  width: 30px;
+  height: 30px;
+  margin: 7px;
 }

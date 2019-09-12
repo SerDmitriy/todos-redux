@@ -104,6 +104,7 @@ export default (state = initialState, action) => {
     case 'FETCH_TODO_CLEAR':
       return {
         ...initialState
+      }
     case 'FETCH_TODOS_REQUEST':
       return {
         ...state,
@@ -139,7 +140,8 @@ export default (state = initialState, action) => {
         todos: state.todos.map(item => {
           if (item.id === action.payload.id) {item.checked = !action.payload.checked}
           return item;
-        }),
+        })
+      }
     case 'CHECKED_TODO_FAILED':
       return {
         ...state,

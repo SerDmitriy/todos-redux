@@ -12,11 +12,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <div>todos</div>
+      <div className='App'>
+        <div className='todos'>todos</div>
         <TodosContainer />
-        <div>footer info </div>
-      </React.Fragment>
+        <div className='footer'>
+          <div>Double-click to edit a todo</div>
+          <div>Created by <b>petehunt</b></div>
+          <div>Part of <b>TodoMVC</b></div>
+        </div>
+      </div>
     );
   }
 }
@@ -28,7 +32,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return { 
+  return {
     addTodo: payload => dispatch(actions.A_AddTodoSuccess(payload)),
     removeTodo: payload => dispatch(actions.A_RemoveTodoSuccess(payload))
   }
