@@ -32,7 +32,7 @@ class AddTodo extends React.Component {
     this.setState({ [name]: value });
     this.validateInput(value);
     if (keyCode === 13 && !errorMsg && value.length != 0) {
-      addTodo({ id: genKey(), value: todoValue });
+      addTodo({ id: genKey(), value: todoValue, checked: false });
       this.setState({ [name]: '' });
     }
   }

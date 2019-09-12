@@ -53,6 +53,17 @@ const A_FetchTodosFailed = (payload) => ({
 })
 const A_FetchTodosClear = () => ({ type: "FETCH_TODOS_CLEAR" })
 
+const A_CheckedTodoRequest = () => ({ type: "CHECKED_TODO_REQUEST" })
+const A_CheckedTodoSuccess = (payload) => ({
+  type: "CHECKED_TODO_SUCCESS",
+  payload
+})
+const A_CheckedTodoFailed = (payload) => ({
+  type: "CHECKED_TODO_FAILED",
+  payload
+})
+const A_CheckedTodoClear = () => ({ type: "CHECKED_TODO_CLEAR" })
+
 export {
   A_AddTodoRequest,
   A_AddTodoSuccess,
@@ -77,5 +88,10 @@ export {
   A_FetchTodosRequest,
   A_FetchTodosSuccess,
   A_FetchTodosFailed,
-  A_FetchTodosClear
+  A_FetchTodosClear,
+
+  A_CheckedTodoRequest,
+  A_CheckedTodoSuccess,
+  A_CheckedTodoFailed,
+  A_CheckedTodoClear,
 }
