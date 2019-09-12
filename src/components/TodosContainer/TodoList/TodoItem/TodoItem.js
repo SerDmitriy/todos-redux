@@ -8,20 +8,27 @@ class TodoItem extends React.Component {
   constructor(props) {
     super(props)
   }
-  handleBtnRemove = (e) => {
-    console.dir(e.target);
-  }
+
   render() {
-    const { item, removeTodo }=this.props;
-    console.dir(this.props);
+    const { item, showTodos, removeTodo, checkedTodo } = this.props;
+    let classNameSpan = '';
+    // if (showTodos === 'checked' && !item.checked) { return null }
+    // if (showTodos === 'unChecked' && !item.checked) { return null }
+    if (showTodos === 'all' && item.checked) {classNameSpan = ' red'} else { classNameSpan = ' lime'}
     return (
       <React.Fragment>
         <div>
-          {item.value}
-          <button 
+          <input
+            type='radio'
+            name={item.value}
+            defaultChecked={item.checked}
+            onClick={() => checkedTodo(item)}/>
+          <span className={classNameSpan}>{item.value}</span> 
+          <button
             type='button'
             onClick={() => removeTodo(item)}
-            > X </button>
+          > X </button>
+
         </div>
       </React.Fragment>
     );
@@ -30,7 +37,8 @@ class TodoItem extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeTodo: payload => dispatch(actions.A_RemoveTodoSuccess(payload))
+    removeTodo: payload => dispatch(actions.A_RemoveTodoSuccess(payload)),
+    checkedTodo: payload => dispatch(actions.A_CheckedTodoSuccess(payload))
   }
 }
 

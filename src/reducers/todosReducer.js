@@ -3,6 +3,7 @@ const initialState = {
   errors: null,
   loading: false,
   success: false,
+  showTodos: 'all',
 }
 
 export default (state = initialState, action) => {
@@ -29,7 +30,7 @@ export default (state = initialState, action) => {
       }
     case 'ADD_TODO_CLEAR':
       return {
-        ...state
+        ...initialState
       }
     case 'EDIT_TODO_REQUEST':
       return {
@@ -53,7 +54,7 @@ export default (state = initialState, action) => {
       }
     case 'EDIT_TODO_CLEAR':
       return {
-        ...state
+        ...initialState
       }
     case 'REMOVE_TODO_REQUEST':
       return {
@@ -77,7 +78,7 @@ export default (state = initialState, action) => {
       }
     case 'REMOVE_TODO_CLEAR':
       return {
-        ...state
+        ...initialState
       }
     case 'FETCH_TODO_REQUEST':
       return {
@@ -102,8 +103,7 @@ export default (state = initialState, action) => {
       }
     case 'FETCH_TODO_CLEAR':
       return {
-        ...state
-      }
+        ...initialState
     case 'FETCH_TODOS_REQUEST':
       return {
         ...state,
@@ -126,9 +126,31 @@ export default (state = initialState, action) => {
       }
     case 'FETCH_TODOS_CLEAR':
       return {
-        ...state
+        ...initialState
       }
-
+    case 'CHECKED_TODO_REQUEST':
+      return {
+        ...state,
+        loading: true
+      }
+    case 'CHECKED_TODO_SUCCESS':
+      return {
+        ...state,
+        todos: state.todos.map(item => {
+          if (item.id === action.payload.id) {item.checked = !action.payload.checked}
+          return item;
+        }),
+    case 'CHECKED_TODO_FAILED':
+      return {
+        ...state,
+        loading: false,
+        success: false,
+        errors: action.payload
+      }
+    case 'CHECKED_TODO_CLEAR':
+      return {
+        ...initialState
+      }
     default:
       return state
   }

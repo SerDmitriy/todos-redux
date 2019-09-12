@@ -5,14 +5,16 @@ import TodoItem from './TodoItem/TodoItem';
 
 const mapStateToProps = state => {
   return {
-    todos: state.todosReducer.todos
+
+    todos: state.todosReducer.todos,
+    showTodos: state.todosReducer.showTodos
   }
 }
 
-export default connect(mapStateToProps, null)(({ todos }) => {
+export default connect(mapStateToProps, null)(({ todos, showTodos }) => {
   return (
-    <React.Fragment>
-      {todos.map( item => <TodoItem key={item.id} item={item} />)}
-    </React.Fragment>
+    <div>
+      {todos.map( item => <TodoItem key={item.id} item={item} showTodos={showTodos}/>)}
+    </div>
   )
 });

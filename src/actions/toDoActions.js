@@ -21,11 +21,10 @@ const A_EditTodoFailed = (payload) => ({
 const A_EditTodoClear = () => ({ type: "EDIT_TODO_CLEAR" })
 
 const A_RemoveTodoRequest = () => ({ type: "REMOVE_TODO_REQUEST" })
-const A_RemoveTodoSuccess = (payload) => {
-  console.log('remove', payload)
-  return {type: "REMOVE_TODO_SUCCESS",
-  payload}
-}
+const A_RemoveTodoSuccess = (payload) => ({
+  type: "REMOVE_TODO_SUCCESS",
+  payload
+})
 const A_RemoveTodoFailed = (payload) => ({
   type: "REMOVE_TODO_FAILED",
   payload
@@ -54,6 +53,17 @@ const A_FetchTodosFailed = (payload) => ({
 })
 const A_FetchTodosClear = () => ({ type: "FETCH_TODOS_CLEAR" })
 
+const A_CheckedTodoRequest = () => ({ type: "CHECKED_TODO_REQUEST" })
+const A_CheckedTodoSuccess = (payload) => ({
+  type: "CHECKED_TODO_SUCCESS",
+  payload
+})
+const A_CheckedTodoFailed = (payload) => ({
+  type: "CHECKED_TODO_FAILED",
+  payload
+})
+const A_CheckedTodoClear = () => ({ type: "CHECKED_TODO_CLEAR" })
+
 export {
   A_AddTodoRequest,
   A_AddTodoSuccess,
@@ -78,5 +88,11 @@ export {
   A_FetchTodosRequest,
   A_FetchTodosSuccess,
   A_FetchTodosFailed,
-  A_FetchTodosClear
+  A_FetchTodosClear,
+
+  A_CheckedTodoRequest,
+  A_CheckedTodoSuccess,
+  A_CheckedTodoFailed,
+  A_CheckedTodoClear,
+
 }
