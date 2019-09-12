@@ -28,6 +28,7 @@ class TodoItem extends React.Component {
             type='button'
             onClick={() => removeTodo(item)}
           > X </button>
+
         </div>
       </React.Fragment>
     );

@@ -5,6 +5,7 @@ import TodoItem from './TodoItem/TodoItem';
 
 const mapStateToProps = state => {
   return {
+
     todos: state.todosReducer.todos,
     showTodos: state.todosReducer.showTodos
   }

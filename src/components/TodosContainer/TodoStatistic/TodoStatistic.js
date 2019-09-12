@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './TodoStatistic.css';
 import { actions } from '../../../actions/rootActions'
 
+
 export default ({ todos }) => {
   return (
     <React.Fragment>
@@ -15,3 +16,4 @@ export default ({ todos }) => {
     </React.Fragment>
   );
 }
+
