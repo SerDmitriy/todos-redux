@@ -3,7 +3,8 @@ const initialState = {
   errors: null,
   loading: false,
   success: false,
-  showTodos: 'all',
+  hasComplited: false,
+  showTodoByType: 'all'
 }
 
 export default (state = initialState, action) => {
@@ -64,7 +65,7 @@ export default (state = initialState, action) => {
     case 'REMOVE_TODO_SUCCESS':
       return {
         ...state,
-        todos: [...state.todos].filter(item => item.id !== action.payload.id),
+        todos: [...state.todos].filter(item => item.id !== action.payload),
         loading: false,
         success: true,
         errors: null
@@ -138,9 +139,10 @@ export default (state = initialState, action) => {
       return {
         ...state,
         todos: state.todos.map(item => {
-          if (item.id === action.payload.id) {item.checked = !action.payload.checked}
+          if (item.id === action.payload) { item.checked = !item.checked }
           return item;
-        })
+        }),
+        hasCompleated: true
       }
     case 'CHECKED_TODO_FAILED':
       return {
@@ -153,6 +155,14 @@ export default (state = initialState, action) => {
       return {
         ...initialState
       }
+
+    case 'SET_TODO_SHOW_TYPE_SUCCESS':
+      return {
+        ...state,
+        showTodoByType: action.payload
+      }
+
+
     default:
       return state
   }

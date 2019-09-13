@@ -15,6 +15,8 @@ class App extends React.Component {
       <div className='App'>
         <div className='todos'>todos</div>
         <TodosContainer />
+        <div className='additionalOne' ></div>
+        <div className='additionalTwo'></div>
         <div className='footer'>
           <div>Double-click to edit a todo</div>
           <div>Created by <b>petehunt</b></div>

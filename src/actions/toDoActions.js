@@ -64,6 +64,13 @@ const A_CheckedTodoFailed = (payload) => ({
 })
 const A_CheckedTodoClear = () => ({ type: "CHECKED_TODO_CLEAR" })
 
+
+const A_SetTodoShowTypeSuccess = (payload) => ({
+  type: "SET_TODO_SHOW_TYPE_SUCCESS",
+  payload
+})
+
+
 export {
   A_AddTodoRequest,
   A_AddTodoSuccess,
@@ -94,5 +101,7 @@ export {
   A_CheckedTodoSuccess,
   A_CheckedTodoFailed,
   A_CheckedTodoClear,
+
+  A_SetTodoShowTypeSuccess,
 
 }

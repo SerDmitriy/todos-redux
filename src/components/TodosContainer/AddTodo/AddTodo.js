@@ -31,7 +31,7 @@ class AddTodo extends React.Component {
     const { todoValue, errorMsg } = this.state;
     this.setState({ [name]: value });
     this.validateInput(value);
-    if (keyCode === 13 && !errorMsg && value.length != 0) {
+    if (keyCode === 13 && !errorMsg && value.length !== 0) {
       addTodo({ id: genKey(), value: todoValue, checked: false });
       this.setState({ [name]: '' });
     }
@@ -40,17 +40,21 @@ class AddTodo extends React.Component {
   render() {
     const { todoValue, errorMsg } = this.state;
     return (
-      <React.Fragment>
+      <div className='addTodo'>
+        <img
+          className='arrow_down'
+          src='/assets/images/arrow_down.png'
+          alt='arrow_down' />
         <input
           value={todoValue}
-          className='addTodo'
+          className='addTodo_input'
           name='todoValue'
           key='inputKey'
           onChange={this.handleChangeField}
           onKeyUp={this.handleChangeField}
           placeholder='What needs to be done?' />
-        {errorMsg ? <div className='errorMsg'>* {errorMsg}</div> : null  }
-      </React.Fragment>
+        {errorMsg ? <div className='errorMsg'>* {errorMsg}</div> : null}
+      </div>
     );
   }
 }

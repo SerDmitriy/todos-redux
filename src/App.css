@@ -16,6 +16,7 @@
 }
 
 .footer {
+  margin-top: 20px;
   text-align: center;
   font-size: 10px;
   color: silver;
@@ -49,4 +50,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.additionalOne {
+  margin: 0 auto;
+  width: 380px;
+  height: 5px;
+  border: 1px solid silver;
+  background-color: rgb(236, 236, 236);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.additionalTwo {
+  margin: 0 auto;
+  width: 360px;
+  height: 5px;
+  border: 1px solid silver;
+  background-color: rgb(236, 236, 236);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }

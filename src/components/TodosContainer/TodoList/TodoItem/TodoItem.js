@@ -5,30 +5,28 @@ import { actions } from '../../../../actions/rootActions';
 
 
 class TodoItem extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   render() {
-    const { item, showTodos, removeTodo, checkedTodo } = this.props;
-    let classNameSpan = '';
-    // if (showTodos === 'checked' && !item.checked) { return null }
-    // if (showTodos === 'unChecked' && !item.checked) { return null } /// add but no replace className
-    if (showTodos === 'all' && item.checked) {classNameSpan = ' darkgray'} else { classNameSpan = ' silver'}
+    const { id, value, checked, removeTodo, checkedTodo } = this.props;
     return (
       <React.Fragment>
         <div className='todoItem'>
           <input
-            type='radio'
-            name={item.value}
-            className='inputChecked'
-            defaultChecked={item.checked}
-            onClick={() => checkedTodo(item)}/>
-          <span className={classNameSpan}>{item.value}</span> 
+            id={id}
+            type='checkbox'
+            name={value}
+            hidden
+            onClick={() => checkedTodo(id)} />
+          <label htmlFor={id} className='todoItem__label'>
+            <img 
+              src={checked ? '/assets/images/itemChecked.svg' : '/assets/images/noChecked.svg'}
+              alt={value} />
+            <span className={checked ? 'checkedText' : ''}>{value}</span>
+          </label>
           <button
             type='button'
             className='delBtn'
-            onClick={() => removeTodo(item)}
+            onClick={() => removeTodo(id)}
           > X </button>
         </div>
       </React.Fragment>

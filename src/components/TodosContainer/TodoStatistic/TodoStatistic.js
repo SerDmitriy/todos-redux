@@ -5,20 +5,35 @@ import { actions } from '../../../actions/rootActions'
 
 const mapStateToProps = state => {
   return {
-    todos: state.todosReducer.todos
+    todos: state.todosReducer.todos,
+    hasComplited: state.todosReducer.hasComplited
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    setTodoShowType: payload => dispatch(actions.A_SetTodoShowTypeSuccess(payload))
   }
 }
 
-export default connect(mapStateToProps, null)(({ todos }) => {
+export default connect(mapStateToProps, mapDispatchToProps)(({ todos, hasComplited, setTodoShowType, handleChangeStatus }) => {
   return (
     <div className='statisticItems'>
       <span>{todos.length} items left </span>
-      <button type="button">All</button>
-      <button type="button">Active</button>
-      <button type="button">Completed</button>
-
-      <button type="button">Clear completed</button>
-    </div>
+      <span>
+        <button
+          onClick={() => handleChangeStatus(null)}
+          type="button">All</button>
+        <button
+          onClick={() => handleChangeStatus(false)}
+          type="button">Active</button>
+        <button
+          onClick={() => handleChangeStatus(true)}
+          type="button">Completed</button>
+      </span>
+      <span>
+        {hasComplited && <button type="button">Clear completed</button>}
+      </span>
+    </div >
   );
 })
 
