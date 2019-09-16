@@ -1,11 +1,13 @@
-import * as toDoActions from './toDoActions';
-import * as authActions from './authActions';
-import * as usersActions from './usersActions';
+import toDoActions from './toDoActions';
+import authActions from './authActions';
+import usersActions from './usersActions';
 
-console.log({...toDoActions.db})
+console.log(authActions)
 
 export const actions = {
-  ...toDoActions.db,
-  ...authActions.db,
-  ...usersActions.db
+  ...toDoActions,
+  ...authActions,
+  ...usersActions
 }
+
+

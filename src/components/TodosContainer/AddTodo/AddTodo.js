@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './AddTodo.css';
-import { actions } from '../../../actions/rootActions';
+// import { actions } from '../../../actions/rootActions';
 import { TEXT_ERR_MSG } from '../../../constants/constants';
 import { genKey } from '../../../utilites/index';
+
+import { addNewTodo } from '../../../services/todosService'
 
 
 class AddTodo extends React.Component {
@@ -27,12 +29,12 @@ class AddTodo extends React.Component {
   }
 
   handleChangeField = ({ target: { name, value }, keyCode }) => {
-    const { addTodo } = this.props;
+    const { A_AddTodo } = this.props;
     const { todoValue, errorMsg } = this.state;
     this.setState({ [name]: value });
     this.validateInput(value);
     if (keyCode === 13 && !errorMsg && value.length !== 0) {
-      addTodo({ id: genKey(), value: todoValue, checked: false });
+      A_AddTodo({ id: genKey(), value: todoValue, checked: false });
       this.setState({ [name]: '' });
     }
   }
@@ -61,7 +63,8 @@ class AddTodo extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTodo: payload => dispatch(actions.Add_Todo.Success(payload)),
+    // A_AddTodo: payload => dispatch(actions.ADD_TODO.SUCCESS(payload)),
+    A_AddTodo: payload => dispatch(addNewTodo(payload))
   }
 }
 

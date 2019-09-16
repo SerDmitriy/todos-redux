@@ -1,16 +1,6 @@
-const statuses = ['Request', 'Success', 'Failed', 'Clear'];
-const actions = ['Auth'];
-const db = {};
+import { actionsCreator } from '../utilites/index';
 
-actions.map(action => {
-  db[action] = {};
-  statuses.map(status => {
-    db[action][status] = (payload, callback, options) => ({
-      type: `${action}_${status}`.toUpperCase(),
-      payload,
-      callback,
-      options
-    })
-  })
-})
-export { db };
+const statuses = ['REQUEST', 'SUCCESS', 'FAILED', 'CLEAR'];
+const actionTypes = ['AUTH'];
+
+export default actionsCreator(statuses, actionTypes);

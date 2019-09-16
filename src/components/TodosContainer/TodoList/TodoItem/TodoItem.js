@@ -7,7 +7,7 @@ import { actions } from '../../../../actions/rootActions';
 class TodoItem extends React.Component {
 
   render() {
-    const { id, value, checked, removeTodo, checkedTodo } = this.props;
+    const { id, value, checked, A_RemoveTodo, A_CheckedTodo } = this.props;
     return (
       <React.Fragment>
         <div className='todoItem'>
@@ -16,7 +16,7 @@ class TodoItem extends React.Component {
             type='checkbox'
             name={value}
             hidden
-            onClick={() => checkedTodo(id)} />
+            onClick={() => A_CheckedTodo(id)} />
           <label htmlFor={id} className='todoItem__label'>
             <img 
               src={checked ? '/assets/images/itemChecked.svg' : '/assets/images/noChecked.svg'}
@@ -26,7 +26,7 @@ class TodoItem extends React.Component {
           <button
             type='button'
             className='delBtn'
-            onClick={() => removeTodo(id)}
+            onClick={() => A_RemoveTodo(id)}
           > X </button>
         </div>
       </React.Fragment>
@@ -36,8 +36,8 @@ class TodoItem extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeTodo: payload => dispatch(actions.Remove_Todo.Success(payload)),
-    checkedTodo: payload => dispatch(actions.Checked_Todo.Success(payload))
+    A_RemoveTodo: payload => dispatch(actions.REMOVE_TODO.SUCCESS(payload)),
+    A_CheckedTodo: payload => dispatch(actions.CHECKED_TODO.SUCCESS(payload))
   }
 }
 
