@@ -8,20 +8,22 @@ class TodosContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      status: null // TODO null, true, false
+      status: null, // TODO null, true, false
     }
   }
 
-  handleChangeStatus = status =>  this.setState({ status })
+  handleChangeStatus = ({ status }) => this.setState({ status })
 
-  render () {
+  render() {
     const { status } = this.state
-
     return (
       <div className='container'>
         <AddTodo />
         <TodoList status={status} />
-        <TodoStatistic handleChangeStatus={this.handleChangeStatus} />
+        <TodoStatistic
+          status={status}
+          handleChangeStatus={this.handleChangeStatus}
+        />
       </div>
     )
   }

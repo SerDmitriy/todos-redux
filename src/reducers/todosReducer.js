@@ -3,8 +3,6 @@ const initialState = {
   errors: null,
   loading: false,
   success: false,
-  hasComplited: false,
-  showTodoByType: 'all'
 }
 
 export default (state = initialState, action) => {
@@ -156,10 +154,10 @@ export default (state = initialState, action) => {
         ...initialState
       }
 
-    case 'SET_TODO_SHOW_TYPE_SUCCESS':
+    case 'CLEAR_COMPLETED_SUCCESS':
       return {
         ...state,
-        showTodoByType: action.payload
+        todos: state.todos.filter(item => !item.checked) 
       }
 
 

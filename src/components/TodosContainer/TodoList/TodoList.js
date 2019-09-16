@@ -11,13 +11,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(({ todos, showTodos, showTodoByType, status }) => {
-  let newTodos = [...todos];
-
-
+export default connect(mapStateToProps, null)(({ todos, showTodos, status }) => {
   return (
     <div className='TodoList'>
-      {newTodos
+      {todos
         .filter(item => status === null ? item : item.checked === status)
         .map(item => <TodoItem key={item.id} {...item} showTodos={showTodos} />)
       }

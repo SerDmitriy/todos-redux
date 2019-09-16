@@ -3,38 +3,67 @@ import { connect } from 'react-redux';
 import './TodoStatistic.css';
 import { actions } from '../../../actions/rootActions'
 
+
+class TodoStatistic extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      buttons: [
+        {
+          value: 'All',
+          status: null,
+          action: () => this.props.handleChangeStatus({ status: null }),
+        },
+        {
+          value: 'Active',
+          status: false,
+          action: () => this.props.handleChangeStatus({ status: false }),
+        },
+        {
+          value: 'Complited',
+          status: true,
+          action: () => this.props.handleChangeStatus({ status: true }),
+        },
+        // {
+        //   value: 'Completed',
+        //   action: () => handleChangeStatus({ status: false }),
+        // },
+      ]
+    }
+  }
+  render() {
+    const { status, todos, clearCompleted } = this.props;
+
+    return (
+      <div className='statisticItems'>
+        <span>
+          {todos.filter(item => status === null ? item : item.checked === status).length}
+          &nbsp;items left</span>
+        <span>
+          {this.state.buttons.map(item => <button
+            onClick={item.action}
+            type="button">{item.value}</button>)
+          }
+        </span>
+        <span>
+          {todos.some(item => item.checked) && <button
+            type="button"
+            onClick={clearCompleted}
+          >Clear completed</button>}
+        </span>
+      </div >
+    );
+  }
+}
+
 const mapStateToProps = state => {
   return {
     todos: state.todosReducer.todos,
-    hasComplited: state.todosReducer.hasComplited
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    setTodoShowType: payload => dispatch(actions.A_SetTodoShowTypeSuccess(payload))
+    clearCompleted: () => dispatch(actions.A_ClearCompletedSuccess())
   }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(({ todos, hasComplited, setTodoShowType, handleChangeStatus }) => {
-  return (
-    <div className='statisticItems'>
-      <span>{todos.length} items left </span>
-      <span>
-        <button
-          onClick={() => handleChangeStatus(null)}
-          type="button">All</button>
-        <button
-          onClick={() => handleChangeStatus(false)}
-          type="button">Active</button>
-        <button
-          onClick={() => handleChangeStatus(true)}
-          type="button">Completed</button>
-      </span>
-      <span>
-        {hasComplited && <button type="button">Clear completed</button>}
-      </span>
-    </div >
-  );
-})
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(TodoStatistic)
