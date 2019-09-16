@@ -36,8 +36,8 @@ class TodoItem extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeTodo: payload => dispatch(actions.A_RemoveTodoSuccess(payload)),
-    checkedTodo: payload => dispatch(actions.A_CheckedTodoSuccess(payload))
+    removeTodo: payload => dispatch(actions.Remove_Todo.Success(payload)),
+    checkedTodo: payload => dispatch(actions.Checked_Todo.Success(payload))
   }
 }
 

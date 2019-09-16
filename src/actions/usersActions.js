@@ -1,21 +1,16 @@
-const A_AddUserRequest = () => ({
-  type: "ADD_USER_REQUEST"
-})
-const A_AddUserSuccess = (payload) => ({
-  type: "ADD_USER_SUCCESS",
-  payload
-})
-const A_AddUserFailed = (payload) => ({
-  type: "ADD_USER_FAILED",
-  'payload': payload
-})
-const A_AddUserClear = () => ({
-  type: "ADD_USER_CLEAR"
-})
+const statuses = ['Request', 'Success', 'Failed', 'Clear'];
+const actions = ['Add_User', 'Remove_User'];
+const db = {};
 
-export {
-  A_AddUserRequest,
-  A_AddUserSuccess,
-  A_AddUserFailed,
-  A_AddUserClear
-}
+actions.map(action => {
+  db[action] = {};
+  statuses.map(status => {
+    db[action][status] = (payload, callback, options) => ({
+      type: `${action}_${status}`.toUpperCase(),
+      payload,
+      callback,
+      options
+    })
+  })
+})
+export { db };

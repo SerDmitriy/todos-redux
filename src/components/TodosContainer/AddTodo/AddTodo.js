@@ -61,7 +61,7 @@ class AddTodo extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTodo: payload => dispatch(actions.A_AddTodoSuccess(payload)),
+    addTodo: payload => dispatch(actions.Add_Todo.Success(payload)),
   }
 }
 

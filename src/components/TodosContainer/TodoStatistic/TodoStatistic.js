@@ -42,13 +42,14 @@ class TodoStatistic extends React.Component {
         <span>
           {this.state.buttons.map(item => <button
             onClick={item.action}
+            key={item.value}
             type="button">{item.value}</button>)
           }
         </span>
         <span>
           {todos.some(item => item.checked) && <button
             type="button"
-            onClick={clearCompleted}
+            onClick={clearCompleted} 
           >Clear completed</button>}
         </span>
       </div >
@@ -63,7 +64,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    clearCompleted: () => dispatch(actions.A_ClearCompletedSuccess())
+    clearCompleted: () => dispatch(actions.Clear_Completed.Success())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TodoStatistic)

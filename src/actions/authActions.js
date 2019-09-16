@@ -1,21 +1,16 @@
-const A_AuthRequest = () => ({
-  type: "AUTH_REQUEST"
-})
-const A_AuthSuccess = (payload) => ({
-  type: "AUTH_SUCCESS",
-  payload
-})
-const A_AuthFailed = (payload) => ({
-  type: "AUTH_FAILED",
-  payload
-})
-const A_AuthClear = () => ({
-  type: "AUTH_CLEAR"
-})
+const statuses = ['Request', 'Success', 'Failed', 'Clear'];
+const actions = ['Auth'];
+const db = {};
 
-export {
-  A_AuthRequest,
-  A_AuthSuccess,
-  A_AuthFailed,
-  A_AuthClear
-}
+actions.map(action => {
+  db[action] = {};
+  statuses.map(status => {
+    db[action][status] = (payload, callback, options) => ({
+      type: `${action}_${status}`.toUpperCase(),
+      payload,
+      callback,
+      options
+    })
+  })
+})
+export { db };
