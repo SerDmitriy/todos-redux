@@ -1,15 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import './App.css';
 import TodosContainer from './components/TodosContainer/TodosContainer';
-import { actions } from './actions/rootActions'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
   render() {
     return (
       <div className='App'>
@@ -27,16 +20,4 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    todos: state.todosReducer.todos
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    addTodo: payload => dispatch(actions.A_AddTodoSuccess(payload)),
-    removeTodo: payload => dispatch(actions.A_RemoveTodoSuccess(payload))
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

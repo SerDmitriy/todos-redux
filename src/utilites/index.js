@@ -4,16 +4,16 @@ export const genKey = () => {
 
 export const actionsCreator = (statuses, actionTypes) => {
   const actions = {};
-  actionTypes.map(actionType => {
+  actionTypes.forEach(actionType => {
     actions[actionType] = {};
-    statuses.map(status => {
+    statuses.forEach(status => 
       actions[actionType][status] = (payload, callback, options) => ({
         type: `${actionType}_${status}`.toUpperCase(),
         payload,
         callback,
         options
       })
-    })
+    )
   })
   return actions;
 }

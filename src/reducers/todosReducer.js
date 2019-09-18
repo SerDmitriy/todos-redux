@@ -39,7 +39,7 @@ export default (state = initialState, action) => {
     case 'EDIT_TODO_SUCCESS':
       return {
         ...state,
-        todos: [...state.todos].map(item => item.id === action.payload.id ? action.payload : item),
+        todos: [...state.todos].map(item => item._id === action.payload._id ? action.payload : item),
         loading: false,
         success: true,
         errors: null
@@ -61,9 +61,10 @@ export default (state = initialState, action) => {
         loading: true
       }
     case 'REMOVE_TODO_SUCCESS':
+      console.log('reducers remove todo, payload:  ', action.payload)
       return {
         ...state,
-        todos: [...state.todos].filter(item => item.id !== action.payload),
+        todos: [...state.todos].filter(item => item._id !== action.payload._id),
         loading: false,
         success: true,
         errors: null
@@ -88,7 +89,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         todos: [...state.todos].filter(
-          item => item.id === action.payload.id),
+          item => item._id === action.payload._id),
         loading: false,
         success: true,
         errors: null
@@ -128,38 +129,24 @@ export default (state = initialState, action) => {
       return {
         ...initialState
       }
-    case 'CHECKED_TODO_REQUEST':
+
+    case 'CLEAR_COMPLETED_REQUEST':
       return {
         ...state,
         loading: true
       }
-    case 'CHECKED_TODO_SUCCESS':
+    case 'CLEAR_COMPLETED_SUCCESS':
       return {
         ...state,
-        todos: state.todos.map(item => {
-          if (item.id === action.payload) { item.checked = !item.checked }
-          return item;
-        }),
-        hasCompleated: true
+        todos: state.todos.filter(item => !item.checked)
       }
-    case 'CHECKED_TODO_FAILED':
+    case 'CLEAR_COMPLETED_FAILED':
       return {
         ...state,
         loading: false,
         success: false,
         errors: action.payload
       }
-    case 'CHECKED_TODO_CLEAR':
-      return {
-        ...initialState
-      }
-
-    case 'CLEAR_COMPLETED_SUCCESS':
-      return {
-        ...state,
-        todos: state.todos.filter(item => !item.checked) 
-      }
-
 
     default:
       return state

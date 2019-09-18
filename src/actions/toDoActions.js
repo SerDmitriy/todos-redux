@@ -6,8 +6,8 @@ const actionTypes = [
   'REMOVE_TODO',
   'FETCH_TODO',
   'FETCH_TODOS',
-  'CHECKED_TODO',
+  'EDIT_TODO',
   'CLEAR_COMPLETED'];
 
-export default actionsCreator(statuses, actionTypes);
+  export default actionsCreator(statuses, actionTypes);
 

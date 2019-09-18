@@ -2,6 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './TodoList.css';
 import TodoItem from './TodoItem/TodoItem';
+import { fetchTodos } from '../../../services/todosService'
+
+
+class TodoList extends React.Component {
+  componentDidMount() {
+    this.props.A_FetchTodos();
+  }
+
+  render = () => {
+    let { todos, showTodos, status } = this.props;
+    return (
+      <div className='TodoList'>
+        {todos
+          .filter(item => status === null ? item : item.checked === status)
+          .map(item => <TodoItem key={item._id} {...item} showTodos={showTodos} />)
+        }
+      </div>
+    )
+  }
+}
 
 const mapStateToProps = state => {
   return {
@@ -10,14 +30,9 @@ const mapStateToProps = state => {
     showTodoByType: state.todosReducer.showTodoByType,
   }
 }
-
-export default connect(mapStateToProps, null)(({ todos, showTodos, status }) => {
-  return (
-    <div className='TodoList'>
-      {todos
-        .filter(item => status === null ? item : item.checked === status)
-        .map(item => <TodoItem key={item.id} {...item} showTodos={showTodos} />)
-      }
-    </div>
-  )
-});
+const mapDispatchToProps = dispatch => {
+  return {
+    A_FetchTodos: () => dispatch(fetchTodos())
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList)

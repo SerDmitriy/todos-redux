@@ -1,18 +1,15 @@
 import { actions } from '../actions/rootActions'
 import { Api } from '../apiCalls'
-import { API_URLS } from '../constants/constants' // TODO rename to index
+import { API_URLS } from '../constants' 
 
 const api = Api.getInstance()
 
 export const addNewTodo = (payload, callback) => {
-  console.log('payload =>', payload)
-
   return dispatch => {
     dispatch(actions.ADD_TODO.REQUEST())
     api.post(API_URLS.TODO, payload)
       .then(res => {
-        console.log(res)
-        dispatch(actions.ADD_TODO.SUCCESS(res))
+        dispatch(actions.ADD_TODO.SUCCESS(res.data))
       })
       .catch(err => {
         console.log(err)
@@ -21,6 +18,58 @@ export const addNewTodo = (payload, callback) => {
       .finally(() => {
         callback && typeof callback === 'function' && callback()
       })
+  }
+}
 
+export const fetchTodos = (payload, callback) => {
+  return dispatch => {
+    dispatch(actions.FETCH_TODOS.REQUEST())
+    api.get(API_URLS.TODOS)
+      .then(res => {
+        console.log(res.data)
+        dispatch(actions.FETCH_TODOS.SUCCESS(res.data))
+      })
+      .catch(err => {
+        console.log(err)
+        dispatch(actions.FETCH_TODOS.FAILED(err))
+      })
+      .finally(() => {
+        callback && typeof callback === 'function' && callback()
+      })
+  }
+}
+
+export const removeTodo = (payload, callback) => {
+  return dispatch => {
+    console.log('removeTodo = ', payload)
+    dispatch(actions.REMOVE_TODO.REQUEST())
+    api.delete(`${API_URLS.TODO}/${payload._id}`)
+      .then(res => {
+        console.log('res of deleting = ', payload._id)
+        dispatch(actions.REMOVE_TODO.SUCCESS(payload))
+      })
+      .catch(err => {
+        console.log('error of deleting = ', payload._id)
+        dispatch(actions.REMOVE_TODO.FAILED(err))
+      })
+      .finally(() => {
+        callback && typeof callback === 'function' && callback()
+      })
+  }
+}
+
+export const editTodo = (payload, callback) => {
+  return dispatch => {
+    dispatch(actions.EDIT_TODO.REQUEST())
+    api.put(`${API_URLS.TODO}/${payload._id}`, payload)
+      .then(res => {
+        dispatch(actions.EDIT_TODO.SUCCESS(res.data))
+      })
+      .catch(err => {
+        dispatch(actions.EDIT_TODO.FAILED(err))
+      })
+      .finally(() => {
+        callback && typeof callback === 'function' && callback()
+      })
   }
 }

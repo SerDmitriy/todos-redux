@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './TodoStatistic.css';
-import { actions } from '../../../actions/rootActions'
+import { actions } from '../../../actions/rootActions';
+
 
 
 class TodoStatistic extends React.Component {
@@ -24,10 +25,6 @@ class TodoStatistic extends React.Component {
           status: true,
           action: () => this.props.handleChangeStatus({ status: true }),
         },
-        // {
-        //   value: 'Completed',
-        //   action: () => handleChangeStatus({ status: false }),
-        // },
       ]
     }
   }
@@ -64,7 +61,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    A_ClearCompleted: () => dispatch(actions.CLEAR_COMPLETED.SUCCESS())
+    A_ClearCompleted: () => dispatch(actions.CLEAR_COMPLETED.SUCCESS()),
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TodoStatistic)
