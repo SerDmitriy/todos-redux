@@ -26,11 +26,9 @@ export const fetchTodos = (payload, callback) => {
     dispatch(actions.FETCH_TODOS.REQUEST())
     api.get(API_URLS.TODOS)
       .then(res => {
-        console.log(res.data)
         dispatch(actions.FETCH_TODOS.SUCCESS(res.data))
       })
       .catch(err => {
-        console.log(err)
         dispatch(actions.FETCH_TODOS.FAILED(err))
       })
       .finally(() => {
@@ -41,12 +39,12 @@ export const fetchTodos = (payload, callback) => {
 
 export const removeTodo = (payload, callback) => {
   return dispatch => {
-    console.log('removeTodo = ', payload)
+    // console.log('removeTodo = ', payload)
     dispatch(actions.REMOVE_TODO.REQUEST())
     api.delete(`${API_URLS.TODO}/${payload._id}`)
       .then(res => {
-        console.log('res of deleting = ', payload._id)
-        dispatch(actions.REMOVE_TODO.SUCCESS(payload))
+        console.log('res of deleting = ', res.data)
+        dispatch(actions.REMOVE_TODO.SUCCESS(res.data))
       })
       .catch(err => {
         console.log('error of deleting = ', payload._id)

@@ -13,4 +13,3 @@ export const API_URLS = {
   TODOS: `${API_PREFIX}/todos`,
 }
 
-

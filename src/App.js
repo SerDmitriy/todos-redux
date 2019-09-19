@@ -1,8 +1,12 @@
 import React from 'react';
 import './App.css';
 import TodosContainer from './components/TodosContainer/TodosContainer';
+import Notification from './components/Notification/Notification';
+// import Router from './routes'
+
 
 class App extends React.Component {
+  
   render() {
     return (
       <div className='App'>
@@ -14,7 +18,8 @@ class App extends React.Component {
           <div>Double-click to edit a todo</div>
           <div>Created by <b>petehunt</b></div>
           <div>Part of <b>TodoMVC</b></div>
-        </div>
+        </div> 
+        <Notification />
       </div>
     );
   }

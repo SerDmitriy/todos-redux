@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './AddTodo.css';
-// import { actions } from '../../../actions/rootActions';
 import { TEXT_ERR_MSG } from '../../../constants';
-// import { genKey } from '../../../utilites/index';
 import { addNewTodo } from '../../../services/todosService'
 
 
