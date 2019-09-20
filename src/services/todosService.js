@@ -39,7 +39,6 @@ export const fetchTodos = (payload, callback) => {
 
 export const removeTodo = (payload, callback) => {
   return dispatch => {
-    // console.log('removeTodo = ', payload)
     dispatch(actions.REMOVE_TODO.REQUEST())
     api.delete(`${API_URLS.TODO}/${payload._id}`)
       .then(res => {

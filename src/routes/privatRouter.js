@@ -1,5 +1,5 @@
 import React from 'react';
-import App from '../App';
+import TodosContainer from '../components/TodosContainer/TodosContainer';
 
 
 export default [
@@ -10,13 +10,8 @@ export default [
   },
   {
     exact: true,
-    path: '/users',
-    component: () => <div>{'All users'}</div>
-  },
-  {
-    exact: true,
     path: '/todo',
-    component: () => <App/>
+    component: TodosContainer
   },
   {
     exact: true,

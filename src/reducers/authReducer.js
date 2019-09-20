@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
       }
     case 'AUTH_CLEAR':
       return {
-        ...state,
+        ...initialState,
       }
 
     default:
