@@ -9,7 +9,6 @@ import { Router } from 'react-router';
 import { createBrowserHistory } from "history"
 const history = createBrowserHistory()
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Router history={history}>
